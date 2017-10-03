@@ -1,0 +1,19 @@
+﻿<config>
+
+  <destination>%USERPROFILE%\Documents\DBDBackups\</destination>
+  <!-- Where you want your backups saved to, Default is %USERPROFILE%\Documents\DBDBackups\ -->
+
+  <exeName>DeadByDaylight_R.exe</exeName>
+  <!-- Name you changed your game executable to, Default is DeadByDaylight_R.exe   -->
+
+  <maxBackups>5</maxBackups>
+  <!-- Maximum number of backups you want to keep, Default is 5 -->
+  
+
+  <backupMode>0</backupMode>
+  <!-- Backup mode, 0 = On Exit, 1 = Interval, 2 = On File Change, Default is 0 -->
+
+  <interval>10</interval>
+  <!-- Interval in minutes, Default is 10 -->
+
+</config>
