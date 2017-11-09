@@ -3,8 +3,8 @@
   <destination>%USERPROFILE%\Documents\DBDBackups\</destination>
   <!-- Where you want your backups saved to, Default is %USERPROFILE%\Documents\DBDBackups\ -->
 
-  <exeName>DeadByDaylight_R.exe</exeName>
-  <!-- Name you changed your game executable to, Default is DeadByDaylight_R.exe   -->
+  <exeLoc>C:\Program Files (x86)\Steam\steamapps\common\Dead by Daylight\</exeLoc>
+  <!-- Location of Dead By Daylight Executable   -->
 
   <maxBackups>5</maxBackups>
   <!-- Maximum number of backups you want to keep, Default is 5 -->

@@ -15,10 +15,11 @@ namespace DBDBackup
         static void Main(string[] args)
         {
             string destination = @"%USERPROFILE%\Documents\DBDBackups\";
-            string OrigExeName = "DeadByDaylight_R.exe";
+            string exeLoc = @"C:\Program Files (x86)\Steam\steamapps\common\Dead By Daylight\";
             int interval = 600000;
+            int maxBackups = 5;
             BackupMode backupMode = BackupMode.ON_EXIT;
-            FolderCopy fc = new FolderCopy();
+            FolderCopy fc;
 
             try
             {
@@ -29,10 +30,10 @@ namespace DBDBackup
 
                 if (configRoot["destination"] != null)
                     destination = configRoot["destination"].InnerText;
-                if (configRoot["exeName"] != null)
-                    OrigExeName = configRoot["exeName"].InnerText;
+                if (configRoot["exeLoc"] != null)
+                    exeLoc = configRoot["exeLoc"].InnerText;
                 if (configRoot["maxBackups"] != null)
-                    fc = new FolderCopy(Convert.ToInt32(configRoot["maxBackups"].InnerText), @"C:\Program Files (x86)\Steam\userdata\81409495\381210\remote\ProfileSaves", destination);
+                    maxBackups = Convert.ToInt32(configRoot["maxBackups"].InnerText);
                 if (configRoot["backupMode"] != null)
                     backupMode = (BackupMode)(Enum.Parse(typeof(BackupMode), configRoot["backupMode"].InnerText));
                 if (configRoot["interval"] != null)
@@ -41,8 +42,11 @@ namespace DBDBackup
             catch (Exception e)
             { }
 
+            fc = new FolderCopy(maxBackups, @"C:\Program Files (x86)\Steam\userdata\81409495\381210\remote\ProfileSaves", destination);
+            Directory.SetCurrentDirectory(exeLoc);
+
             Process DBD = new Process();
-            DBD.StartInfo.FileName = OrigExeName;
+            DBD.StartInfo.FileName = @"DeadByDayLight.exe";
             DBD.Start();
             DBD.WaitForExit();
 
